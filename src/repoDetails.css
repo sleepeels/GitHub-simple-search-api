@@ -1,0 +1,13 @@
+.repo-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.repo-details .lang p {
+  font-weight: 600;
+}
+.repo-details .url p a {
+  font-weight: 600;
+}

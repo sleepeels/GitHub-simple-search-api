@@ -1,0 +1,266 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-background: linear-gradient(
+    243.02deg,
+    #dc7a7a 0%,
+    rgba(53, 10, 10, 0.85) 99.56%
+  );
+  --rounded-corner: 0.4rem;
+
+  --white: #fff;
+  --dark-gray: #333;
+  --main-gray: #ededed;
+  --light-gray: #f7f7f7;
+  --dark-green: #009688;
+  --info-message: rgba(225, 245, 254, 0.92);
+}
+
+html {
+  font-size: 1;
+}
+
+body {
+  height: 100vh;
+  background: var(--primary-background);
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+}
+
+.page {
+  height: 100vh;
+  position: relative;
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  /* grid-template-rows: 1fr 3fr; */
+  /* grid-template-areas: "header"; */
+  width: 70%;
+  margin: auto;
+}
+
+/* header */
+.header {
+  margin-top: 1rem;
+  display: flex;
+  /* display: grid; */
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+  grid-area: "header";
+  /* grid-template-rows: 1fr; */
+  /* grid-template-columns: 2fr 1fr ; */
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+}
+
+.heading .icon {
+  font-size: 2rem;
+  padding: 0.7rem;
+}
+
+/* repos and details */
+.repo-wrapper {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 1rem;
+  grid-area: "repos";
+}
+
+.repos-panel,
+.repo-details {
+  height: 50vh;
+  background: #bbbbbb;
+  margin: 0.8rem;
+  border-radius: var(--rounded-corner);
+}
+
+.repo-details {
+  height: 30vh;
+}
+.repos-panel {
+  font-weight: 600;
+  flex: 2;
+  /* padding-top: .2rem; */
+}
+.repo-details {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.repo-details h2 {
+  padding: 1rem;
+}
+
+.repo {
+  background: #fefefe67;
+  margin: 1rem;
+  padding: 0.3rem;
+  border-radius: var(--rounded-corner);
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.repo:hover {
+  /* background: rgba(112, 112, 112, 0.7); */
+  box-shadow: 0px 4px 4px rgba(112, 112, 112, 0.7);
+}
+/* .page .header .heading .search-box .repo-wrapper .repos-panel .repo-details */
+
+.repos-panel {
+  overflow-y: scroll;
+  /* padding: 0.8rem; */
+}
+.repos-panel::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3);
+  /* border-radius: 1rem; */
+  background-color: rgba(0, 0, 0, 0.295);
+}
+
+.repos-panel::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(172, 66, 66);
+}
+
+.repos-panel::-webkit-scrollbar-thumb {
+  /* border-radius: 5px; */
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #290909;
+}
+
+/* repos search form */
+
+.repos-search-form {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+.repos-search-form button {
+  /* padding: 0.4rem; */
+  /* margin: 0.8rem; */
+  max-width: 100px;
+  /* align-self: flex-end; */
+}
+
+.header .search-box input {
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.44);
+  border: none;
+  box-shadow: 6px 12px 5px rgba(172, 66, 66, 0.788);
+  margin: 0.8rem;
+  border-radius: var(--rounded-corner);
+}
+
+button {
+  color: white;
+  padding: 0.8rem;
+  background: rgb(255, 1, 1);
+  border: none;
+  box-shadow: 6px 12px 5px rgba(172, 66, 66, 0.788);
+  margin: 0.8rem;
+  border-radius: var(--rounded-corner);
+}
+.header .search-box input:focus {
+  outline: none;
+  color: white;
+}
+.header .search-box input:valid {
+  color: white;
+}
+.header .search-box input::placeholder {
+  color: white;
+}
+.header .search-box input:focus::placeholder {
+  color: transparent;
+}
+
+/* ANIMATIONS */
+
+.header {
+  /* animation: pops-in 0.5s ease-in; */
+
+  animation: pop-from-left 0.5s cubic-bezier(0.76, 0.58, 0.5, 1.04);
+}
+.repos-panel {
+  /* animation: pops-in 0.5s ease-in; */
+  animation: pop-from-bottom 0.5s cubic-bezier(0.76, 0.58, 0.75, 1.29);
+}
+
+.repo-details {
+  animation: pop-from-right 0.5s cubic-bezier(0.76, 0.58, 0.75, 1.29);
+}
+.search-box form {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both 1.4s;
+}
+
+@keyframes pop-from-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes pop-from-bottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+@keyframes pop-from-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 0.5rem;
+  }
+}
